@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suit 1" verbose="5" parallel="methods" thread-count="2">
+    <test name="Run on Chrome">
+        <parameter name="browser" value="CH"></parameter>
+        <classes>
+            <class name="nordic.testing.days.AppTest">
+            </class>
+        </classes>
+    </test>
+</suite>
