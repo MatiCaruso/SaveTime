@@ -12,13 +12,17 @@ public class SharedDriver {
 
     public static ThreadLocal<RemoteWebDriver> createDriver() {
         try {
-                REAL_DRIVER = new ThreadLocal<>();
-                ChromeOptions capabilities = new ChromeOptions();
-                capabilities.setAcceptInsecureCerts(true);
-                String local_grid = "http://localhost:4444/wd/hub";
-                REAL_DRIVER.set(new RemoteWebDriver(new URL(local_grid), capabilities));
+            REAL_DRIVER = new ThreadLocal<>();
+            ChromeOptions capabilities = new ChromeOptions();
+            capabilities.setAcceptInsecureCerts(true);
 
-                REAL_DRIVER.get().manage().window().maximize();
+            /**
+             *  Set your grid ip:port
+             */
+
+            String local_grid = "http://localhost:4444/wd/hub";
+            REAL_DRIVER.set(new RemoteWebDriver(new URL(local_grid), capabilities));
+            REAL_DRIVER.get().manage().window().maximize();
         } catch ( MalformedURLException e) {
             e.printStackTrace();
         }
