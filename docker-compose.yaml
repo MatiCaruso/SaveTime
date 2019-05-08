@@ -1,0 +1,59 @@
+# docker-compose file
+# To execute this docker-compose yml file use docker-compose -f <file_name> up
+# Add the "-d" flag at the end for deattached execution
+
+#selenium-hub: equivalent to manually running the command docker run -d -p 4444:4444 --name selenium-hub  -P selenium/hub:3.6.0-bromine
+selenium-hub:
+  restart: always
+  image: selenium/hub:3.6.0-bromine
+  ports:
+    - "4444:4444"
+#selenium-chrome equivalent to manually running the command docker run -d --link selenium-hub:hub -P --name chrome selenium/node-chrome-debug:3.6.0-bromine
+selenium-chrome-1:
+  restart: always
+  image: selenium/node-chrome-debug:3.6.0-bromine
+  ports:
+    - "5555:5900"
+  volumes:
+    - /dev/shm:/dev/shm
+  links:
+    - selenium-hub:hub
+#selenium-firefox equivalent to manually running the command docker run -d --link selenium-hub:hub -P --name firefox selenium/node-firefox-debug:3.6.0-bromine
+# selenium-firefox:
+#   restart: always
+#   image: selenium/node-firefox-debug:3.6.0-bromine
+#   ports:
+#     - "5556:5900"
+#   volumes:
+#     - /dev/shm:/dev/shm
+#   links:
+#     - selenium-hub:hub
+
+selenium-chrome-2:
+  restart: always
+  image: selenium/node-chrome-debug:3.6.0-bromine
+  ports:
+    - "5557:5900"
+  volumes:
+    - /dev/shm:/dev/shm
+  links:
+    - selenium-hub:hub
+#selenium-firefox equivalent to manually running the command docker run -d --link selenium-hub:hub -P --name firefox selenium/node-firefox-debug:3.6.0-bromine
+# selenium-firefox-2:
+#   restart: always
+#   image: selenium/node-firefox-debug:3.6.0-bromine
+#   ports:
+#     - "5558:5900"
+#   volumes:
+#     - /dev/shm:/dev/shm
+#   links:
+#     - selenium-hub:hub
+selenium-chrome-3:
+  restart: always
+  image: selenium/node-chrome-debug:3.6.0-bromine
+  ports:
+    - "5559:5900"
+  volumes:
+    - /dev/shm:/dev/shm
+  links:
+    - selenium-hub:hub
