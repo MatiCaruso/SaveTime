@@ -18,6 +18,7 @@ public class SharedDriver {
 
             /**
              *  Set your grid ip:port
+             *  take in consideration that the ip could be virtualize by docker
              */
 
             String local_grid = "http://localhost:4444/wd/hub";
